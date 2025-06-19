@@ -91,6 +91,7 @@ const chartHumidity = new Chart(document.getElementById('chartHumidity'), {
     responsive: true,
     scales: {
       yAxes: [{
+        position: 'left',
         scaleLabel: {
           display: true,
           labelString: 'Влажность (%)',
@@ -102,6 +103,13 @@ const chartHumidity = new Chart(document.getElementById('chartHumidity'), {
         }
       }],
       xAxes: [{
+        type: 'time',
+        time: {
+          unit: 'day',
+          displayFormats: {
+            day: 'DD.MM.YYYY'
+          }
+        },
         scaleLabel: {
           display: true,
           labelString: 'Дата',
@@ -112,6 +120,20 @@ const chartHumidity = new Chart(document.getElementById('chartHumidity'), {
           fontSize: 12
         }
       }]
+    },
+    zoom: {
+      enabled: true,
+      drag: true,
+      mode: 'xy',
+      rangeMin: {
+        x: null,
+        y: null
+      },
+      rangeMax: {
+        x: null,
+        y: null
+      },
+      speed: 0.1
     }
   }
 });
