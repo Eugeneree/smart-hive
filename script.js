@@ -10,17 +10,15 @@ async function fetchData() {
   chartTemp.data.labels.push("");
   chartTemp.data.datasets[0].data.push(json.tempInside);
   chartTemp.data.datasets[1].data.push(json.tempOutside);
+  chartTemp.update();
 
   chartWeight.data.labels.push("");
   chartWeight.data.datasets[0].data.push(json.weight);
+  chartWeight.update();
 
   chartHumidity.data.labels = humidityData.labels;
   chartHumidity.data.datasets[0].data = humidityData.values;
-
-  chartTemp.update();
-  chartWeight.update();
   chartHumidity.update();
-
 }
 
 const chartTemp = new Chart(document.getElementById('chartTemp'), {
