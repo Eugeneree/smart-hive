@@ -93,17 +93,23 @@ const chartHumidity = new Chart(document.getElementById('chartHumidity'), {
       yAxes: [{
         scaleLabel: {
           display: true,
-          labelString: 'Влажность (%)'
+          labelString: 'Влажность (%)',
+          fontSize: 14,
+          fontStyle: 'bold'
         },
         ticks: {
-          min: 0,
-          max: 100
+          fontSize: 12
         }
       }],
       xAxes: [{
         scaleLabel: {
           display: true,
-          labelString: 'Дата/время'
+          labelString: 'Дата',
+          fontSize: 14,
+          fontStyle: 'bold'
+        },
+        ticks: {
+          fontSize: 12
         }
       }]
     }
