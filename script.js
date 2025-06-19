@@ -85,9 +85,12 @@ const chartHumidity = new Chart(document.getElementById('chartHumidity'), {
   type: 'line',
   data: {
     labels: [],
-    datasets: [
-      { label: 'Влажность', borderColor: 'blue', data: [], fill: false }
-    ]
+    datasets: [{
+      label: 'Влажность',
+      borderColor: 'blue',
+      data: [],
+      fill: false
+    }]
   },
   options: {
     responsive: true,
@@ -96,6 +99,10 @@ const chartHumidity = new Chart(document.getElementById('chartHumidity'), {
         scaleLabel: {
           display: true,
           labelString: 'Влажность (%)'
+        },
+        ticks: {
+          min: 0,
+          max: 100
         }
       }],
       xAxes: [{
