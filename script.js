@@ -16,6 +16,11 @@ async function fetchData() {
   chartWeight.data.datasets[0].data.push(json.weight);
   chartWeight.update();
 
+// Получаем данные о влажности
+  const humidityResponse = await fetch('/api/humidity');
+  const humidityData = await humidityResponse.json();
+
+  // Обновляем график влажности
   chartHumidity.data.labels = humidityData.labels;
   chartHumidity.data.datasets[0].data = humidityData.values;
   chartHumidity.update();
@@ -30,7 +35,23 @@ const chartTemp = new Chart(document.getElementById('chartTemp'), {
       { label: 'Температура снаружи', borderColor: 'yellow', data: [], fill: false }
     ]
   },
-  options: { responsive: true }
+  options: {
+    responsive: true,
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Влажность (кг)'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Дата/время'
+        }
+      }]
+    }
+  }
 });
 
 const chartWeight = new Chart(document.getElementById('chartWeight'), {
@@ -41,7 +62,23 @@ const chartWeight = new Chart(document.getElementById('chartWeight'), {
       { label: 'Вес', borderColor: 'green', data: [], fill: false }
     ]
   },
-  options: { responsive: true }
+  options: {
+    responsive: true,
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Вес (кг)'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Дата/время'
+        }
+      }]
+    }
+  }
 });
 
 const chartHumidity = new Chart(document.getElementById('chartHumidity'), {
@@ -52,7 +89,23 @@ const chartHumidity = new Chart(document.getElementById('chartHumidity'), {
       { label: 'Влажность', borderColor: 'blue', data: [], fill: false }
     ]
   },
-  options: { responsive: true }
+  options: {
+    responsive: true,
+    scales: {
+      yAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Влажность (%)'
+        }
+      }],
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: 'Дата/время'
+        }
+      }]
+    }
+  }
 });
 
 setInterval(fetchData, 5000);
