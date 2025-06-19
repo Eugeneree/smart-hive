@@ -14,8 +14,13 @@ async function fetchData() {
   chartWeight.data.labels.push("");
   chartWeight.data.datasets[0].data.push(json.weight);
 
+  chartHumidity.data.labels = humidityData.labels;
+  chartHumidity.data.datasets[0].data = humidityData.values;
+
   chartTemp.update();
   chartWeight.update();
+  chartHumidity.update();
+
 }
 
 const chartTemp = new Chart(document.getElementById('chartTemp'), {
@@ -24,7 +29,7 @@ const chartTemp = new Chart(document.getElementById('chartTemp'), {
     labels: [],
     datasets: [
       { label: 'Температура внутри', borderColor: 'red', data: [], fill: false },
-      { label: 'Температура снаружи', borderColor: 'blue', data: [], fill: false }
+      { label: 'Температура снаружи', borderColor: 'yellow', data: [], fill: false }
     ]
   },
   options: { responsive: true }
@@ -36,6 +41,17 @@ const chartWeight = new Chart(document.getElementById('chartWeight'), {
     labels: [],
     datasets: [
       { label: 'Вес', borderColor: 'green', data: [], fill: false }
+    ]
+  },
+  options: { responsive: true }
+});
+
+const chartHumidity = new Chart(document.getElementById('chartHumidity'), {
+  type: 'line',
+  data: {
+    labels: [],
+    datasets: [
+      { label: 'Влажность', borderColor: 'blue', data: [], fill: false }
     ]
   },
   options: { responsive: true }
