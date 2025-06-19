@@ -16,13 +16,8 @@ async function fetchData() {
   chartWeight.data.datasets[0].data.push(json.weight);
   chartWeight.update();
 
-// Получаем данные о влажности
-  const humidityResponse = await fetch('/api/humidity');
-  const humidityData = await humidityResponse.json();
-
-  // Обновляем график влажности
-  chartHumidity.data.labels = humidityData.labels;
-  chartHumidity.data.datasets[0].data = humidityData.values;
+  chartHumidity.data.labels.push("");
+  chartHumidity.data.datasets[0].data.push(json.humidity);
   chartHumidity.update();
 }
 
